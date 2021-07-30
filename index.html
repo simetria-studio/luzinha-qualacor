@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Luzinha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./plugin/bootstrap-4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./plugin/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="background: #EE2461;">
+    <main class="back">
+        <section class="back-1 flex-center-geral">
+            <div class="container" style="text-align: center;">
+                <img id="play" src="./img/play 1.svg" alt="Botão de Play">
+                <h1 class="back-title">Jogar de novo?</h1>
+            </div>
+        </section>
+
+        <section class="back-2">
+            <h1 class="back-title">Qual é a cor?</h1>
+        </section>
+
+        <section class="back-3">
+            <div class="container-fluid">
+                <div class="row-custom">
+                    <div class="col-12 col-custom">
+                        <!-- Imagem dos violino com cores -->
+                        <div class="row-custom justify-content-between">
+                            <div class="col-2 images rotate-left img-cor-1"></div>
+                            <div class="col-2 images rotate-left img-cor-2"></div>
+                            <div class="col-2 images rotate-left img-cor-3"></div>
+                            <div class="col-2 images rotate-right img-cor-4"></div>
+                            <div class="col-2 images rotate-right img-cor-5"></div>
+                            <div class="col-2 images rotate-right img-cor-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-custom">
+                        <!-- Cores -->
+                        <div class="row-custom justify-content-between">
+                            <div class="col-2 colors color-1"></div>
+                            <div class="col-2 colors color-2"></div>
+                            <div class="col-2 colors color-3"></div>
+                            <div class="col-2 colors color-4"></div>
+                            <div class="col-2 colors color-5"></div>
+                            <div class="col-2 colors color-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="div-erro d-none"><img class="img-erro" src="./img/warning.svg" alt=""></div>
+    </main>
+
+    <script src="./plugin/jquery-3.6.0.min.js"></script>
+    <script src="./plugin/bootstrap-4.6.0/js/bootstrap.min.js"></script>
+    <script src="./plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="./plugin/jquery.ui.touch-punch.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
