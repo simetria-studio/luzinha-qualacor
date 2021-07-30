@@ -4,11 +4,15 @@
     }
 }
 
+.back section {
+    position: absolute;
+}
+
 img {
     max-width: 100%;
 }
 
-.div-erro {
+.div-ico {
     position: absolute;
     top: 0;
     width: 100%;
@@ -16,8 +20,7 @@ img {
     display: flex;
     justify-content: center;
 }
-
-.img-erro {
+.div-ico img {
     width: 40%;
 }
 
@@ -118,6 +121,7 @@ img {
     border: 2.07043px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 50%;
+    z-index: 50;
 }
 .back-3 .color-name {
     font-family: Fredoka One;

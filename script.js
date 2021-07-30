@@ -13,27 +13,6 @@ function cols_img_color(width, height){
     }
 }
 
-// Ativa o erro
-function erro(){
-    var soma = 0;
-    var reload_tremer = setInterval(() => {
-        soma++;
-        $('.back-3').addClass('tremer-left');
-        $('.back-3').removeClass('tremer-right');
-
-        setTimeout(() => {
-            $('.back-3').addClass('tremer-right');
-            $('.back-3').removeClass('tremer-left');
-
-            if(soma == 6){
-                clearInterval(reload_tremer);
-                $('.back-3').removeClass('tremer-right');
-                $('.back-3').removeClass('tremer-left');
-            }
-        }, 50);
-    }, 100);
-}
-
 // Faz o violino dançar
 function danca_violino(){
     return setInterval(() => {
@@ -131,9 +110,7 @@ function img_color(){
 
 // Iniciado o droppable
 function iniciar_dropp(){
-    $( ".colors" ).find('.btn-color').draggable({
-        revert: "invalid"
-    });
+    $( ".colors" ).find('.btn-color').draggable();
     // Ativar evento caso esteje o botão por cima
     var totalAcertos = 0;
     $(".images").droppable({
@@ -157,50 +134,34 @@ function iniciar_dropp(){
                             totalAcertos++; // Soma quantas vezes acertou a cor
                             // Se tiver todas certas, avisa que certou todas
                             if(totalAcertos == 6){
-                                totalAcertos = 0; // zeramos a contagem
-                                setTimeout(()=>{
-                                    // Trocamos o texto para dar o parabens
-                                    $('.back-2').find('.back-title').text('Parabéns você acertou todas!');
-                                    // Escondemos o jogo e abrimos o texto inicial dando os parabens
-                                    $('.back-3').hide( 'slide', {}, 1000, function() {
-                                        $('.back-2').show('slide', {}, 1000, function(){
-                                            // Setamos outro tempo para iniciar o jogo
-                                            setTimeout(()=>{
-                                                $('.back-2').hide('slide', {}, 1000, function(){
-                                                    // Setamos outro tempo para iniciar o jogo
-                                                    $('.back-1').show('slide', {}, 1000, function() {
-                                                        $('.back-1').css('display', 'flex');
-                                                    });
-                                                    $('.back-1').css('display', 'flex');
+                                $('.div-correto').removeClass('d-none'); // Apesentando os parabes
 
-                                                    // Trocamos a palvra
-                                                    $('.back-2').find('.back-title').text('Qual é a cor?');
-    
-                                                    img_color(); // Resetando o jogo
-                                                });
-                                            },1000);
+                                setTimeout(()=>{
+                                    $('.div-correto').css('z-index', '0'); // Zerando o z-index
+                                    $('.back-1').css('z-index', '50'); // Adiconado z-index pára dar um efeito
+
+                                    // Fazendo aparacer o botão play
+                                    $('.back-1').show('slide', {}, 1000, function() {
+                                        $('.back-1').css('display', 'flex'); // setando o flex o do botão, bug do jquery-ui
+
+                                        $('.div-correto').addClass('d-none'); // Escondendo os parabens
+                                        // Escondendo o joqeuinho
+                                        $('.back-3').hide( 'slide', {}, 1000, function() {
+                                            img_color(); // Resetando o jogo
+                                            $('.div-correto').css('z-index', '50'); // Deixando em 50 o z-index
+                                            $('.back-1').css('z-index', '0'); // Retirando o z-index
                                         });
                                     });
-                                }, 500);
+                                    $('.back-1').css('display', 'flex'); // setando o flex o do botão, bug do jquery-ui
+                                }, 1500);
                             }
                         }, 300);
                     }, 300);
                 }else{ // Casoa  cor não esteje certa
-                    erro();
-                    iniciar_dropp();
-                    // setTimeout(()=>{
-                    //     $('.back-3').hide( 'slide', {}, 1000, function() {
-                    //         $('.back-2').hide('slide', {}, 1000, function(){
-                    //             // Setamos outro tempo para iniciar o jogo
-                    //             $('.back-1').show('slide', {}, 1000, function() {
-                    //                 $('.back-1').css('display', 'flex');
-                    //             });
-                    //             $('.back-1').css('display', 'flex');
-
-                    //             img_color(); // Resetando o jogo
-                    //         });
-                    //     });
-                    // },2000);
+                    $('.div-erro').removeClass('d-none');
+                    $('.back-3').effect( 'shake', {}, 500, function() {
+                        $('.div-erro').addClass('d-none');
+                    });
                 }
             }
         }
@@ -213,8 +174,8 @@ $(document).ready(function(){
     // Carregando o jogo
     setTimeout(()=>{
         // Função para iniciar o jogo
-        $('.back-2').hide( 'slide', {}, 1000, function() {
-            $('.back-3').show('slide', {}, 1000);
+        $('.back-3').show( 'slide', {}, 1000, function() {
+            $('.back-2').hide('slide', {}, 1000);
         });
     }, 1500);
     // Iniciar o Jogo novamente
@@ -222,14 +183,16 @@ $(document).ready(function(){
         iniciar_dropp(); // iniciado a função novamente
         reload_rotate = danca_violino();
         
-        $('.back-1').hide( 'slide', {}, 1000, function() {
-            $('.back-2').show('slide', {}, 1000, function(){
-                setTimeout(()=>{
-                    $('.back-2').hide( 'slide', {}, 1000, function() {
-                        $('.back-3').show('slide', {}, 1000);
-                    });
-                }, 1000);
+        setTimeout(() => {
+            $('.back-2').show( 'slide', {}, 1000, function() {
+                $('.back-1').hide('slide', {}, 1000, function(){
+                    setTimeout(()=>{
+                        $('.back-3').show( 'slide', {}, 1000, function() {
+                            $('.back-2').hide('slide', {}, 1000);
+                        });
+                    }, 500);
+                });
             });
-        });
+        }, 200);
     });
 });
