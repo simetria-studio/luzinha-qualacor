@@ -24,6 +24,18 @@ img {
     width: 40%;
 }
 
+.div-voltar {
+    position: absolute;
+    top: 3%;
+    right: 9%;
+    text-align: right;
+}
+
+.div-voltar .img-voltar {
+    position: relative;
+    width: 30%;
+}
+
 .tremer-left {
     left: -4px;
     transition: .1s left;
