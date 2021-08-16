@@ -148,6 +148,7 @@ function iniciar_dropp(){
                                         // Escondendo o joqeuinho
                                         $('.back-3').hide( 'slide', {}, 1000, function() {
                                             img_color(); // Resetando o jogo
+                                            iniciar_dropp(); // iniciado a função novamente
                                             $('.div-correto').css('z-index', '50'); // Deixando em 50 o z-index
                                             $('.back-1').css('z-index', '0'); // Retirando o z-index
                                         });
@@ -179,8 +180,7 @@ $(document).ready(function(){
         });
     }, 1500);
     // Iniciar o Jogo novamente
-    $(document).on('click', '#play', function(){
-        iniciar_dropp(); // iniciado a função novamente
+    $(document).on('click', '.play', function(){
         reload_rotate = danca_violino();
         
         setTimeout(() => {
